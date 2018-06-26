@@ -1,6 +1,9 @@
 package v3
 
-import "github.com/rancher/types/image"
+import (
+	projectv3 "github.com/rancher/types/apis/project.cattle.io/v3"
+	"github.com/rancher/types/image"
+)
 
 const (
 	DefaultK8s = "v1.10.5-rancher1-1"
@@ -35,6 +38,7 @@ var (
 			PodInfraContainer:         m("gcr.io/google_containers/pause-amd64:3.0"),
 			Ingress:                   m("rancher/nginx-ingress-controller:0.10.2-rancher3"),
 			IngressBackend:            m("k8s.gcr.io/defaultbackend:1.4"),
+			MetricsServer:             m("gcr.io/google_containers/metrics-server-amd64:v0.2.1"),
 		},
 		"v1.8.11-rancher1": {
 			Etcd:                      m("quay.io/coreos/etcd:v3.0.17"),
@@ -60,6 +64,7 @@ var (
 			PodInfraContainer:         m("gcr.io/google_containers/pause-amd64:3.0"),
 			Ingress:                   m("rancher/nginx-ingress-controller:0.10.2-rancher3"),
 			IngressBackend:            m("k8s.gcr.io/defaultbackend:1.4"),
+			MetricsServer:             m("gcr.io/google_containers/metrics-server-amd64:v0.2.1"),
 		},
 		"v1.8.11-rancher2-1": {
 			Etcd:                      m("quay.io/coreos/etcd:v3.0.17"),
@@ -85,6 +90,7 @@ var (
 			PodInfraContainer:         m("gcr.io/google_containers/pause-amd64:3.0"),
 			Ingress:                   m("rancher/nginx-ingress-controller:0.10.2-rancher3"),
 			IngressBackend:            m("k8s.gcr.io/defaultbackend:1.4"),
+			MetricsServer:             m("gcr.io/google_containers/metrics-server-amd64:v0.2.1"),
 		},
 		"v1.9.5-rancher1-1": {
 			Etcd:                      m("quay.io/coreos/etcd:v3.1.12"),
@@ -110,6 +116,7 @@ var (
 			PodInfraContainer:         m("gcr.io/google_containers/pause-amd64:3.0"),
 			Ingress:                   m("rancher/nginx-ingress-controller:0.10.2-rancher3"),
 			IngressBackend:            m("k8s.gcr.io/defaultbackend:1.4"),
+			MetricsServer:             m("gcr.io/google_containers/metrics-server-amd64:v0.2.1"),
 		},
 		"v1.9.7-rancher1": {
 			Etcd:                      m("quay.io/coreos/etcd:v3.1.12"),
@@ -135,6 +142,7 @@ var (
 			PodInfraContainer:         m("gcr.io/google_containers/pause-amd64:3.0"),
 			Ingress:                   m("rancher/nginx-ingress-controller:0.10.2-rancher3"),
 			IngressBackend:            m("k8s.gcr.io/defaultbackend:1.4"),
+			MetricsServer:             m("gcr.io/google_containers/metrics-server-amd64:v0.2.1"),
 		},
 		"v1.9.7-rancher2-1": {
 			Etcd:                      m("quay.io/coreos/etcd:v3.1.12"),
@@ -160,6 +168,7 @@ var (
 			PodInfraContainer:         m("gcr.io/google_containers/pause-amd64:3.0"),
 			Ingress:                   m("rancher/nginx-ingress-controller:0.10.2-rancher3"),
 			IngressBackend:            m("k8s.gcr.io/defaultbackend:1.4"),
+			MetricsServer:             m("gcr.io/google_containers/metrics-server-amd64:v0.2.1"),
 		},
 		"v1.10.0-rancher1-1": {
 			Etcd:                      m("quay.io/coreos/etcd:v3.1.12"),
@@ -185,6 +194,7 @@ var (
 			PodInfraContainer:         m("gcr.io/google_containers/pause-amd64:3.1"),
 			Ingress:                   m("rancher/nginx-ingress-controller:0.10.2-rancher3"),
 			IngressBackend:            m("k8s.gcr.io/defaultbackend:1.4"),
+			MetricsServer:             m("gcr.io/google_containers/metrics-server-amd64:v0.2.1"),
 		},
 		"v1.10.1-rancher1": {
 			Etcd:                      m("quay.io/coreos/etcd:v3.1.12"),
@@ -210,6 +220,7 @@ var (
 			PodInfraContainer:         m("gcr.io/google_containers/pause-amd64:3.1"),
 			Ingress:                   m("rancher/nginx-ingress-controller:0.10.2-rancher3"),
 			IngressBackend:            m("k8s.gcr.io/defaultbackend:1.4"),
+			MetricsServer:             m("gcr.io/google_containers/metrics-server-amd64:v0.2.1"),
 		},
 		"v1.10.1-rancher2-1": {
 			Etcd:                      m("quay.io/coreos/etcd:v3.1.12"),
@@ -235,6 +246,7 @@ var (
 			PodInfraContainer:         m("gcr.io/google_containers/pause-amd64:3.1"),
 			Ingress:                   m("rancher/nginx-ingress-controller:0.10.2-rancher3"),
 			IngressBackend:            m("k8s.gcr.io/defaultbackend:1.4"),
+			MetricsServer:             m("gcr.io/google_containers/metrics-server-amd64:v0.2.1"),
 		},
 		"v1.10.3-rancher2-1": {
 			Etcd:                      m("quay.io/coreos/etcd:v3.1.12"),
@@ -260,6 +272,7 @@ var (
 			PodInfraContainer:         m("gcr.io/google_containers/pause-amd64:3.1"),
 			Ingress:                   m("rancher/nginx-ingress-controller:0.10.2-rancher3"),
 			IngressBackend:            m("k8s.gcr.io/defaultbackend:1.4"),
+			MetricsServer:             m("gcr.io/google_containers/metrics-server-amd64:v0.2.1"),
 		},
 		"v1.10.5-rancher1-1": {
 			Etcd:                      m("quay.io/coreos/etcd:v3.1.12"),
@@ -285,6 +298,7 @@ var (
 			PodInfraContainer:         m("gcr.io/google_containers/pause-amd64:3.1"),
 			Ingress:                   m("rancher/nginx-ingress-controller:0.10.2-rancher3"),
 			IngressBackend:            m("k8s.gcr.io/defaultbackend:1.4"),
+			MetricsServer:             m("gcr.io/google_containers/metrics-server-amd64:v0.2.1"),
 		},
 	}
 
@@ -309,18 +323,25 @@ var (
 	// ToolsSystemImages default images for alert, pipeline, logging
 	ToolsSystemImages = struct {
 		AlertSystemImages    AlertSystemImages
-		PipelineSystemImages PipelineSystemImages
+		PipelineSystemImages projectv3.PipelineSystemImages
 		LoggingSystemImages  LoggingSystemImages
 	}{
 		AlertSystemImages: AlertSystemImages{
 			AlertManager:       m("prom/alertmanager:v0.11.0"),
 			AlertManagerHelper: m("rancher/alertmanager-helper:v0.0.2"),
 		},
-		PipelineSystemImages: PipelineSystemImages{
-			Jenkins:       m("jenkins/jenkins:2.107-slim"),
-			JenkinsJnlp:   m("jenkins/jnlp-slave:3.10-1-alpine"),
-			AlpineGit:     m("alpine/git:1.0.4"),
-			PluginsDocker: m("plugins/docker:17.12"),
+		PipelineSystemImages: projectv3.PipelineSystemImages{
+			Jenkins:     m("rancher/pipeline-jenkins-server:v0.1.0"),
+			JenkinsJnlp: m("jenkins/jnlp-slave:3.10-1-alpine"),
+			AlpineGit:   m("alpine/git:1.0.4"),
+			//FIXME
+			PluginsDocker: m("lawr/docker-publish:7_9"),
+			//PluginsDocker: m("rancher/pipeline-docker-publish:v0.1.0"),
+			Minio:    m("minio/minio:RELEASE.2018-05-25T19-49-13Z"),
+			Registry: m("registry:2"),
+			//FIXME
+			KubeApply: m("lawr/kapply:7_9"),
+			//KubeApply:     m("rancher/pipeline-kube-apply:v0.1.0"),
 		},
 		LoggingSystemImages: LoggingSystemImages{
 			Fluentd:                       m("rancher/fluentd:v0.1.9"),
